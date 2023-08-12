@@ -6,6 +6,7 @@ import './App.css';
 const FirebaseApp = initializeApp (firebaseConfig)
 
 function App() {
+  
   return (
     <div className="App">
       <button type="button" class="btn btn-primary">Primary</button>
