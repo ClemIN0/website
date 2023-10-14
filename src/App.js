@@ -1,5 +1,6 @@
 import { firebaseConfig } from './config/Config';
 import { initializeApp } from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 import { useState } from 'react'
 
 import './App.css';
@@ -16,6 +17,7 @@ import { Routes, Route } from 'react-router-dom';
 import { NavContext } from './contexts/NavContext'
 
 const FirebaseApp = initializeApp (firebaseConfig)
+const FirebaseAuth = getAuth( FirebaseApp )
 
 const NavRoutes = [
   { name: "Home", goto: "/" },
