@@ -4,7 +4,8 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import { FBAuthContext } from "../contexts/FBAuthContext"
 
 export function Signup ( props ) {
     const [ email, setEmail ] = useState("")
