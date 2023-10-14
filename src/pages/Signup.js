@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button"
 
 import { useState, useEffect, useContext } from "react"
 import { FBAuthContext } from "../contexts/FBAuthContext"
+import { createUserWithEmailAndPassword } from "firebase/auth"
 
 export function Signup ( props ) {
     const [ email, setEmail ] = useState("")
@@ -13,6 +14,8 @@ export function Signup ( props ) {
     const [ validEmail, setValidEmail ] = useState(false)
     const [ validPassword, setValidPassword ] = useState( false )
   
+    const FBAuth = useContext( FBAuthContext )
+    
     useEffect( () => {
       if( email.indexOf('@') > 0 ) {
         setValidEmail( true )
@@ -31,11 +34,25 @@ export function Signup ( props ) {
       }
     }, [password])
   
+    const SignUpHandler = () => {
+        createUserWithEmailAndPassword( FBAuth, email, password )
+        .then( ( user ) => {
+          // user is created in Firebase
+          console.log(user)
+          // alert user that account has been created
+        })
+        .catch( (error) => {
+          console.log( error.code, error.message )
+        })
+      }
+    
+      // function functionName() {} OR () => {}
+    
     return (
         <Container fluid className="mt-4">
         <Row>
           <Col md={{span: 4, offset: 4}}>
-            <Form>
+            <Form onSubmit={ () => SignUpHandler}>
               <h3>Sign up for an account</h3>
               <Form.Group>
                 <Form.Label>Email address</Form.Label>
