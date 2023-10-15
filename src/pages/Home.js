@@ -1,16 +1,20 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
 
 import { useContext, useEffect, useState } from 'react';
 import { collection, getDocs } from "firebase/firestore";
+import { ref } from "firebase/storage";
 
 import { FBDbContext } from '../contexts/FBDbContext';
+import { FBStorageContext } from '../contexts/FBStorageContext'
 
 export function Home () {
     const[ data, setData ] = useState([])
 
     const FBDb = useContext(FBDbContext)
+    const FBStorage = useContext( FBStorageContext )
 
     const getData = async () => {
         // get data from firestore collection called "movies"
@@ -37,7 +41,11 @@ export function Home () {
     const Columns = data.map( (movie, key) => {
         return(
             <Col md="4" key={key}>
-                <h3>{movie.title}</h3>
+                <Card>
+                    <Card.Body>
+                        <Card.Title>{book.title}</Card.Title>
+                    </Card.Body>
+                </Card>
             </Col>
         )
     })
