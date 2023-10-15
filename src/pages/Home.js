@@ -25,7 +25,7 @@ export function Home () {
         })
         // set the movie array as the data state
         setData(movies)
-        console.log(movies)
+        // console.log(movies)
     }
 
     useEffect( () => {
@@ -34,9 +34,19 @@ export function Home () {
         }
     })
 
+    const Columns = data.map( (book) => {
+        return(
+            <Col md="4">
+                <h3>{book.title}</h3>
+            </Col>
+        )
+    })
+
     return (
-        <div>
-            <h1>Home</h1>
-        </div>
+        <Container>
+            <Row>
+                {Columns}
+            </Row>
+       </Container>
     )
 }
