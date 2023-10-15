@@ -20,12 +20,12 @@ export function Home () {
         querySnapshot.forEach( (doc) => {
             let movie = doc.data()
             movie.id = doc.id
-            // add the book to the array
+            // add the movie to the array
             movies.push(movie)
         })
         // set the movie array as the data state
         setData(movies)
-        // console.log(movies)
+        console.log(movies)
     }
 
     useEffect( () => {
@@ -34,10 +34,10 @@ export function Home () {
         }
     })
 
-    const Columns = data.map( (book) => {
+    const Columns = data.map( (movie, key) => {
         return(
-            <Col md="4">
-                <h3>{book.title}</h3>
+            <Col md="4" key={key}>
+                <h3>{movie.title}</h3>
             </Col>
         )
     })
