@@ -80,7 +80,7 @@ export function Signup ( props ) {
                 type="submit" 
                 className="my-2 w-100" 
                 size="lg" 
-                disabled = { ( validEmail && validPassword ) ? false: true }
+                disabled = { ( validEmail && validPassword ) ? false : true }
               >
                 Sign up
               </Button>
