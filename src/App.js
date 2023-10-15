@@ -1,6 +1,7 @@
 import { firebaseConfig } from './config/Config';
 import { initializeApp } from 'firebase/app';
-import { getAuth, onAuthStateChanged, getFireStore } from "firebase/auth"
+import { getAuth, onAuthStateChanged } from "firebase/auth"
+import { getFirestore } from "firebase/firestore"
 import { useState } from 'react'
 
 import './App.css';
@@ -20,7 +21,7 @@ import { FBAuthContext } from './contexts/FBAuthContext';
 
 const FirebaseApp = initializeApp (firebaseConfig)
 const FirebaseAuth = getAuth(FirebaseApp)
-const FirebaseDB = getFireStore(FirebaseApp)
+const FirebaseDB = getFirestore(FirebaseApp)
 
 const NavRoutes = [
   { name: "Home", goto: "/" },
