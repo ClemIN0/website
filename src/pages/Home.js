@@ -25,7 +25,14 @@ export function Home () {
         })
         // set the movie array as the data state
         setData(movies)
+        console.log(movies)
     }
+
+    useEffect( () => {
+        if( data.length === 0 ) {
+            getData()
+        }
+    })
 
     return (
         <div>
