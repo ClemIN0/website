@@ -42,7 +42,7 @@ export function Signup(props) {
 
   useEffect(() => {
     let userLength = false
-    let noIllegalChars = false
+    let illegalChars = []
     // check if the username is of a certain length
     if (username.length < 5) {
       userLength = false
@@ -54,14 +54,12 @@ export function Signup(props) {
     const chars = Array.from(username)
     chars.forEach((chr) => {
       if (allowedChars.includes(chr) === false) {
-        noIllegalChars = false
-      }
-      else {
-        noIllegalChars = true
+        illegalChars.push( chr )
       }
     })
     // check if username does not exist in Firebase if the other two checks are true
-    if (userLength === true && noIllegalChars === true) {
+    if (userLength === true && illegalChars.length === 0 ) {
+      console.log( userLength, illegalChars)
       clearTimeout(timer)
       timer = setTimeout(() => { checkUser(username) }, 1500)
     }
