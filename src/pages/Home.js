@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 
 import { useContext, useEffect, useState } from 'react';
 import { collection, getDocs } from "firebase/firestore";
-import { ref } from "firebase/storage";
+import { ref, getDownloadURL } from "firebase/storage";
 
 import { FBDbContext } from '../contexts/FBDbContext';
 import { FBStorageContext } from '../contexts/FBStorageContext'
@@ -29,7 +29,6 @@ export function Home () {
         })
         // set the movie array as the data state
         setData(movies)
-        console.log(movies)
     }
 
     useEffect( () => {
@@ -38,10 +37,21 @@ export function Home () {
         }
     })
 
+    const Image = ( props ) => {
+        const [imgPath,setImgPath] = useState()
+        const imgRef = ref( FBStorage, `movie_cover/${ props.path }`)
+        getDownloadURL( imgRef ).then( (url) => setImgPath(url) )
+
+        return(
+            <Card.Img variant="top" src={imgPath} />
+        )
+    }
+
     const Columns = data.map( (movie, key) => {
         return(
             <Col md="4" key={key}>
                 <Card>
+                    <Image path={movie.image} />
                     <Card.Body>
                         <Card.Title>{book.title}</Card.Title>
                     </Card.Body>

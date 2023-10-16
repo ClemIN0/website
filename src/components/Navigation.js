@@ -6,7 +6,6 @@ import { NavContext } from '../contexts/NavContext'
 
 export function Navigation (props) {
   const NavigationItems = useContext( NavContext )
-  console.log(NavigationItems)
   const Items = NavigationItems.map( (item) => {
     return (
       <Nav.Item>
