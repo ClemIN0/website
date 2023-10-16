@@ -51,7 +51,7 @@ export function Home () {
 
     const Columns = data.map( (movie, key) => {
         return(
-            <Col md="4" key={key}>
+            <Col md="3" key={key} className="my-3">
                 <Card>
                     <Image path={movie.image} />
                     <Card.Body>
