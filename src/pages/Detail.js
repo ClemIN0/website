@@ -122,7 +122,7 @@ export function Detail(props) {
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col md="4">
           <ReviewForm user={auth} handler={ReviewHandler} />
           </Col>
         </Row>
