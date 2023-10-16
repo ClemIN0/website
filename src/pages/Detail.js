@@ -11,7 +11,7 @@ import { FBStorageContext } from '../contexts/FBStorageContext';
 import { AuthContext } from '../contexts/AuthContext';
 import { FBAuthContext } from '../contexts/FBAuthContext';
 
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, addDoc, collection } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -53,6 +53,13 @@ export function Detail(props) {
       getMovie(movieId)
     }
   })
+
+   // function to handle review submission
+   const ReviewHandler = async ( reviewData ) => {
+    // create a document inside firestore
+    const path = `movies/${movieId}/reviews`
+    const review = await addDoc( collection(FBDb, path), reviewData )
+  }
 
   const Image = ( props ) => {
     const [imgPath,setImgPath] = useState()
