@@ -10,6 +10,8 @@ import { ref, getDownloadURL } from "firebase/storage";
 import { FBDbContext } from '../contexts/FBDbContext';
 import { FBStorageContext } from '../contexts/FBStorageContext'
 
+import  '../styles/Home.css'
+
 export function Home () {
     const[ data, setData ] = useState([])
 
@@ -43,7 +45,7 @@ export function Home () {
         getDownloadURL( imgRef ).then( (url) => setImgPath(url) )
 
         return(
-            <Card.Img variant="top" src={imgPath} />
+            <Card.Img variant="top" src={imgPath} className="card-image" />
         )
     }
 
