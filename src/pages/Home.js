@@ -52,11 +52,12 @@ export function Home () {
     const Columns = data.map( (movie, key) => {
         return(
             <Col md="3" key={key} className="my-3">
-                <Card>
+                <Card className="movie-card">
                     <Image path={movie.image} />
                     <Card.Body>
-                        <Card.Title>{book.title}</Card.Title>
+                        <Card.Title>{movie.title}</Card.Title>
                     </Card.Body>
+                    <a href={"/detail/"+movie.id} className="card-link"></a>
                 </Card>
             </Col>
         )
