@@ -118,10 +118,10 @@ export function Detail(props) {
             <h4>{movieData.director} </h4>
             <h5>{movieData.year}</h5>
             <p>{movieData.summary}</p>
-            <p>{movieData.length} pages</p>
+            <p>{movieData.length} length</p>
           </Col>
         </Row>
-        <Row>
+        <Row className="my-3">
           <Col md="4">
           <ReviewForm user={auth} handler={ReviewHandler} />
           </Col>
